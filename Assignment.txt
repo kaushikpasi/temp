@@ -1,0 +1,33 @@
+This assignment will give you a good hands on over AWS services that are expected from you
+
+Aim: Access data from S3 using AWS serverless tools like Athena and Glue. Also ETL to be done using EMR (Hive suggested as its easy, can also use Spark). After ETL write the data to other S3 bucket. This output should be populated in Glue metadata and should be accessible from Athena.
+
+Steps to perform this are as follows:
+
+1. Upload a sample CSV file to S3:
+Ref: https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html
+CSV:
+col1,col2,col3
+1,a,10
+2,b,20
+3,c,10
+4,d,10
+5,e,30
+
+2. ETL using Hive on EMR with Glue Cataloging enabled
+Ref: https://docs.aws.amazon.com/emr/latest/ReleaseGuide/EMR_Hive_Commands.html
+Note: 
+-Here the example shown in reference is DynamoDB and S3 as source/destinations. 
+-Just have your S3 bucket location mentioned in all places for your case and make appropriate changes in the ETL script. (Just 3 commands are required to this complete ETL using Hive and 2 significant ones using Spark)
+-Remember to check AWS Glue Data Catalog settings box while launching EMR (Advanced options-->Software Configuration)
+
+3. Query the data from Athena to check and confirm:
+Ref: https://docs.aws.amazon.com/athena/latest/ug/getting-started.html
+Note: 
+-Table should be created already as Glue catalog was enabled in ETL step. 
+-If if doesn't appear then you may have skipped some steps, please go back and recheck
+
+Additional bonus factors (if done great, not mandatory):
+1. Writing data in Parquet format, saving it using Snappy compression and still accessible using Athena
+2. Read data from Glue using Spark as dataframe (Ref: https://aws.amazon.com/blogs/big-data/aws-glue-now-supports-scala-scripts/)
+
